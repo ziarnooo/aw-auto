@@ -1,10 +1,11 @@
-# AW Auto — strona warsztatu
+# AW Auto - strona warsztatu
 
 Landing page warsztatu samochodowego **AW Auto** w Kobierzycach.
 
 - **Stack:** statyczny HTML (jeden plik `index.html`), zero zależności buildowych.
-- **Design:** dark, czarno-czerwony premium (Preset B "Swiss Grotesk" z `moje-wymarzone-strony.md`).
-- **Fonty:** Bricolage Grotesque (nagłówki) + Hanken Grotesk (tekst) — Google Fonts.
+- **Design:** dark, grafitowo-czerwony premium (grafit `#202226`, akcent czerwień).
+- **Fonty:** Montserrat (nagłówki) + Manrope (tekst) - Google Fonts.
+- **Logo:** `assets/logo.svg` (pełne, na ciemne tło), `assets/logo-mark.svg` (monogram), favicon w `assets/`.
 
 ## Uruchomienie lokalnie
 
@@ -19,13 +20,11 @@ python3 -m http.server 4330
 
 Wszystkie miejsca oznaczone w kodzie komentarzem `DO UZUPEŁNIENIA`:
 
-- [ ] Zdjęcia z warsztatu (hero, galeria, sekcja "Dlaczego my") — teraz stock z Unsplash
-- [ ] Prawdziwe dane kontaktowe: adres, telefon, e-mail, godziny
-- [ ] Statystyki w hero (lata, liczba aut, ocena Google)
-- [ ] Lista i opisy usług — potwierdzić i dopisać specjalizacje
-- [ ] Prawdziwe opinie z Google
-- [ ] Osadzenie mapy Google (iframe)
-- [ ] Dane w Schema.org (JSON-LD) i meta OG
+- [x] Logo AW Auto (hero, nawigacja, favicon)
+- [x] Adres i godziny otwarcia (ul. Robotnicza 13, 55-040 Kobierzyce; 8:00-17:00)
+- [ ] Prawdziwy telefon i e-mail (teraz placeholdery)
+- [ ] Zdjęcie w tle hero (teraz stock z Unsplash) - docelowo hala/podnośnik
+- [ ] Osadzenie mapy Google (iframe) - pinezka: ul. Robotnicza 13
 
 ## TODO techniczne
 

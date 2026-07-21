@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- ============================================================
-     SEO — lokalne, warsztat samochodowy Kobierzyce
+     SEO - lokalne, warsztat samochodowy Kobierzyce
      DO UZUPEŁNIENIA (Ola): telefon, e-mail, NIP,
      link do Google Maps i profilu Google.
      ============================================================ -->
-<title>AW Auto — warsztat samochodowy w Kobierzycach | mechanika, diagnostyka, serwis</title>
-<meta name="description" content="AW Auto — nowoczesny warsztat samochodowy w Kobierzycach. Diagnostyka komputerowa, przeglądy, serwis olejowy, naprawy mechaniczne, hamulce, zawieszenie, klimatyzacja i serwis opon. Jasna wycena przed naprawą.">
+<title>AW Auto - warsztat samochodowy w Kobierzycach | mechanika, diagnostyka, serwis</title>
+<meta name="description" content="AW Auto - nowoczesny warsztat samochodowy w Kobierzycach. Diagnostyka komputerowa, przeglądy, serwis olejowy, naprawy mechaniczne, hamulce, zawieszenie, klimatyzacja i serwis opon. Jasna wycena przed naprawą.">
 <meta name="keywords" content="warsztat samochodowy Kobierzyce, mechanik Kobierzyce, serwis samochodowy Wrocław, diagnostyka komputerowa, wymiana oleju, klimatyzacja samochodowa, serwis opon">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://aw-auto.pl/">
@@ -18,27 +18,33 @@
 <!-- Open Graph / social -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
-<meta property="og:title" content="AW Auto — warsztat samochodowy w Kobierzycach">
+<meta property="og:title" content="AW Auto - warsztat samochodowy w Kobierzycach">
 <meta property="og:description" content="Jakość, której możesz zaufać. Diagnostyka, przeglądy, naprawy mechaniczne, klimatyzacja i serwis opon w Kobierzycach.">
-<meta property="og:image" content="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=70">
+<meta property="og:image" content="https://aw-auto.pl/assets/og.png">
 <meta name="theme-color" content="#202226">
 
-<!-- Fonty — Montserrat (nagłówki) + Manrope (tekst). Styl klarowny, prosty. -->
+<!-- Favicon / logo -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<!-- Fonty - Montserrat (nagłówki) + Manrope (tekst). Styl klarowny, prosty. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 /* ============================================================
-   AW AUTO — DESIGN TOKENS
+   AW AUTO - DESIGN TOKENS
    Grafit / ciemny szary (nie czerń) + premium czerwień akcentowa.
    Typografia: Montserrat (display) + Manrope (body).
    Zasada: klarownie, przejrzyście, bez przeładowania.
    ============================================================ */
 :root{
-  --bg:#202226;            /* grafit — baza */
+  --bg:#202226;            /* grafit - baza */
   --bg-2:#1A1C1F;          /* ciemniejsza sekcja (alt) */
-  --panel:#292C31;         /* karta — jaśniejsza od tła */
+  --panel:#292C31;         /* karta - jaśniejsza od tła */
   --ink:#F2F1EF;           /* prawie biel */
   --muted:rgba(242,241,239,.62);
   --faint:rgba(242,241,239,.42);
@@ -87,9 +93,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;font-weight:700;lett
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:1.05rem}
 .brand{display:flex;align-items:center;gap:.6rem;font-family:var(--font-display);
   font-weight:800;font-size:1.3rem;letter-spacing:.02em;color:var(--ink);text-decoration:none}
-.brand .mark{width:34px;height:34px;border-radius:9px;background:var(--grad);
-  display:grid;place-items:center;font-size:.82rem;font-weight:800;color:#fff;
-  box-shadow:0 4px 18px -6px rgba(225,29,40,.7)}
+.brand .mark{width:34px;height:34px;display:block;object-fit:contain}
 .brand b{color:var(--accent-hi);font-weight:800}
 .nav-links{display:flex;align-items:center;gap:2rem}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:600;
@@ -113,7 +117,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;font-weight:700;lett
   letter-spacing:.2em;text-transform:uppercase;color:var(--accent-hi);margin-bottom:1.3rem}
 .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent)}
 
-/* ---------- HERO — duże logo na środku, zdjęcie w tle ---------- */
+/* ---------- HERO - duże logo na środku, zdjęcie w tle ---------- */
 .hero{position:relative;overflow:hidden;min-height:88vh;display:grid;place-items:center;
   text-align:center;padding-block:clamp(5rem,12vw,9rem)}
 .hero-bg{position:absolute;inset:0;z-index:0;
@@ -126,17 +130,10 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;font-weight:700;lett
   background:radial-gradient(40rem 30rem at 50% 8%,rgba(225,29,40,.16),transparent 62%)}
 .hero .wrap{position:relative;z-index:2}
 
-/* DUŻE LOGO — placeholder wordmark. Podmiana na prawdziwe logo:
-   https://drive.google.com/drive/folders/1Sv-eoBL0ufreasDv28miiztN6l80FAf_ */
-.logo-hero{display:inline-flex;flex-direction:column;align-items:center;gap:.8rem;margin-bottom:1.8rem}
-.logo-hero .badge{width:clamp(72px,11vw,104px);height:clamp(72px,11vw,104px);border-radius:22px;
-  background:var(--grad);display:grid;place-items:center;color:#fff;font-family:var(--font-display);
-  font-weight:800;font-size:clamp(1.8rem,3.4vw,2.6rem);letter-spacing:.02em;
-  box-shadow:0 18px 46px -16px rgba(225,29,40,.75)}
-.logo-hero .word{font-family:var(--font-display);font-weight:800;
-  font-size:clamp(2.6rem,8vw,5.4rem);letter-spacing:.06em;line-height:.98}
-.logo-hero .word b{background:var(--grad);-webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent}
+/* DUŻE LOGO w hero (assets/logo.svg) */
+.logo-hero{margin-bottom:1.8rem}
+.logo-hero .logo-img{width:clamp(230px,34vw,380px);height:auto;display:block;margin-inline:auto;
+  filter:drop-shadow(0 16px 42px rgba(0,0,0,.45))}
 .hero .tagline{font-size:clamp(1.05rem,1.9vw,1.4rem);color:var(--ink);font-weight:600;
   letter-spacing:.01em;margin-bottom:.6rem}
 .hero .lede{font-size:clamp(1rem,1.5vw,1.15rem);color:var(--muted);max-width:40rem;
@@ -152,12 +149,12 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;font-weight:700;lett
 .head p{color:var(--muted);font-size:1.1rem;max-width:44rem}
 .head.center p{margin-inline:auto}
 
-/* O NAS — tekst + akapity */
+/* O NAS - tekst + akapity */
 .about{max-width:46rem}
 .about p{color:var(--muted);font-size:1.12rem;line-height:1.7;margin-bottom:1.2rem}
 .about p:last-child{margin-bottom:0;color:var(--ink);font-weight:600}
 
-/* USŁUGI — czyste karty (ikona + nazwa) */
+/* USŁUGI - czyste karty (ikona + nazwa) */
 .grid{display:grid;gap:1rem}
 .grid.g3{grid-template-columns:repeat(3,1fr)}
 .card{display:flex;align-items:center;gap:1.1rem;background:var(--panel);
@@ -170,7 +167,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;font-weight:700;lett
 .card h3{font-size:1.06rem;letter-spacing:-0.01em;font-weight:600;line-height:1.3}
 .services-outro{margin-top:2.4rem;color:var(--muted);font-size:1.08rem;line-height:1.7;max-width:52rem}
 
-/* KORZYŚCI — lista z „ptaszkami" */
+/* KORZYŚCI - lista z „ptaszkami" */
 .checks{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
 .checks li{display:flex;gap:1rem;align-items:flex-start}
 .checks .cb{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:var(--accent-soft);
@@ -191,7 +188,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;font-weight:700;lett
 .map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);min-height:340px;
   background:#17191c url("https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=900&q=60") center/cover no-repeat;
   display:grid;place-items:end;padding:1.4rem}
-/* DO UZUPEŁNIENIA: osadzić prawdziwą mapę Google (iframe) — pinezka: ul. Robotnicza 13, Kobierzyce */
+/* DO UZUPEŁNIENIA: osadzić prawdziwą mapę Google (iframe) - pinezka: ul. Robotnicza 13, Kobierzyce */
 .map .pin{font-size:.85rem;background:rgba(26,28,31,.8);backdrop-filter:blur(6px);
   padding:.5rem .9rem;border-radius:999px;border:1px solid var(--line)}
 
@@ -251,7 +248,7 @@ footer nav a:hover{color:var(--ink)}
 <!-- ================= NAV ================= -->
 <header class="nav">
   <div class="wrap">
-    <a href="#top" class="brand"><span class="mark">AW</span>AW <b>Auto</b></a>
+    <a href="#top" class="brand"><img src="assets/logo-mark.svg" alt="" class="mark" width="34" height="34">AW <b>Auto</b></a>
     <nav class="nav-links">
       <a href="#o-nas">O nas</a>
       <a href="#uslugi">Usługi</a>
@@ -266,10 +263,9 @@ footer nav a:hover{color:var(--ink)}
 <section class="hero" id="top">
   <div class="hero-bg"></div>
   <div class="wrap">
-    <!-- DUŻE LOGO NA ŚRODKU (placeholder — do podmiany na logo z Google Drive) -->
+    <!-- DUŻE LOGO NA ŚRODKU -->
     <div class="logo-hero load l1">
-      <span class="badge">AW</span>
-      <span class="word">AW <b>AUTO</b></span>
+      <img src="assets/logo.svg" alt="AW Auto - warsztat samochodowy w Kobierzycach" class="logo-img" width="380" height="376">
     </div>
     <p class="tagline load l2">Jakość, której możesz zaufać.</p>
     <p class="lede load l3">Nowoczesny warsztat samochodowy w Kobierzycach. Rzetelna diagnostyka, precyzyjne wykonanie i uczciwe podejście do każdego klienta.</p>
@@ -373,13 +369,13 @@ footer nav a:hover{color:var(--ink)}
       <div class="info">
         <!-- DO UZUPEŁNIENIA (Ola): prawdziwy telefon i e-mail. -->
         <div class="row reveal d1"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 5c0 9 6 15 15 15l0-3-4-2-2 2a12 12 0 0 1-6-6l2-2-2-4-3 0z"/></svg></span>
-          <div><div class="k">Telefon</div><div class="v"><a href="tel:+48000000000">+48 000 000 000</a><small>Zadzwoń do nas – szybko ustalimy dogodny termin wizyty.</small></div></div></div>
+          <div><div class="k">Telefon</div><div class="v"><a href="tel:+48000000000">+48 000 000 000</a><small>Zadzwoń do nas - szybko ustalimy dogodny termin wizyty.</small></div></div></div>
         <div class="row reveal d2"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
-          <div><div class="k">E-mail</div><div class="v"><a href="mailto:kontakt@aw-auto.pl">kontakt@aw-auto.pl</a><small>Napisz do nas – odpowiemy najszybciej, jak to możliwe.</small></div></div></div>
+          <div><div class="k">E-mail</div><div class="v"><a href="mailto:kontakt@aw-auto.pl">kontakt@aw-auto.pl</a><small>Napisz do nas - odpowiemy najszybciej, jak to możliwe.</small></div></div></div>
         <div class="row reveal d3"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
           <div><div class="k">Adres</div><div class="v">ul. Robotnicza 13, 55&#8209;040 Kobierzyce</div></div></div>
         <div class="row reveal d4"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-          <div><div class="k">Godziny otwarcia</div><div class="v">8:00–17:00</div></div></div>
+          <div><div class="k">Godziny otwarcia</div><div class="v">8:00-17:00</div></div></div>
         <a href="tel:+48000000000" class="btn btn-primary reveal d4" style="justify-self:start;margin-top:.4rem">Zadzwoń teraz <span class="arrow">&rarr;</span></a>
       </div>
       <div class="map reveal"><span class="pin">📍 AW Auto · ul. Robotnicza 13, Kobierzyce</span></div>
@@ -392,8 +388,8 @@ footer nav a:hover{color:var(--ink)}
 <footer>
   <div class="wrap">
     <div>
-      <a href="#top" class="brand"><span class="mark">AW</span>AW <b>Auto</b></a>
-      <p>Nowoczesny warsztat samochodowy w Kobierzycach. Jakość, której możesz zaufać — rzetelna diagnostyka, precyzyjne wykonanie i uczciwe podejście do klienta.</p>
+      <a href="#top" class="brand"><img src="assets/logo-mark.svg" alt="" class="mark" width="34" height="34">AW <b>Auto</b></a>
+      <p>Nowoczesny warsztat samochodowy w Kobierzycach. Jakość, której możesz zaufać - rzetelna diagnostyka, precyzyjne wykonanie i uczciwe podejście do klienta.</p>
     </div>
     <div>
       <h5>Warsztat</h5>
@@ -421,13 +417,13 @@ footer nav a:hover{color:var(--ink)}
   </div>
 </footer>
 
-<!-- Schema.org — lokalne SEO (AutoRepair). DO UZUPEŁNIENIA: telefon, e-mail. -->
+<!-- Schema.org - lokalne SEO (AutoRepair). DO UZUPEŁNIENIA: telefon, e-mail. -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"AutoRepair",
   "name":"AW Auto",
-  "description":"Nowoczesny warsztat samochodowy w Kobierzycach — diagnostyka komputerowa, przeglądy okresowe, serwis olejowy, naprawy mechaniczne, hamulce, zawieszenie, klimatyzacja i serwis opon.",
+  "description":"Nowoczesny warsztat samochodowy w Kobierzycach - diagnostyka komputerowa, przeglądy okresowe, serwis olejowy, naprawy mechaniczne, hamulce, zawieszenie, klimatyzacja i serwis opon.",
   "areaServed":"Kobierzyce, Wrocław",
   "address":{"@type":"PostalAddress","streetAddress":"ul. Robotnicza 13","addressLocality":"Kobierzyce","postalCode":"55-040","addressCountry":"PL"},
   "telephone":"+48000000000",
@@ -438,7 +434,7 @@ footer nav a:hover{color:var(--ink)}
 </script>
 
 <script>
-/* scroll reveal — IntersectionObserver, animuje tylko opacity+transform */
+/* scroll reveal - IntersectionObserver, animuje tylko opacity+transform */
 (function(){
   var els=document.querySelectorAll('.reveal');
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
