@@ -76,10 +76,12 @@ body{
 
 h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;font-weight:700;letter-spacing:-0.02em}
 
-/* atmosfera: subtelny czerwony glow (znacznie stonowany na graficie) */
-.glow{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(46rem 32rem at 85% -12%,rgba(225,29,40,.12),transparent 60%),
-             radial-gradient(38rem 28rem at 6% 110%,rgba(225,29,40,.06),transparent 62%);}
+/* atmosfera: czerwony glow wjeżdża delikatnie po chwili (ten „kolorek w tle") + leciutko oddycha */
+.glow{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;
+  background:radial-gradient(46rem 32rem at 85% -12%,rgba(225,29,40,.14),transparent 60%),
+             radial-gradient(38rem 28rem at 6% 110%,rgba(225,29,40,.07),transparent 62%);
+  animation:glow-in 2.4s var(--ease) .5s forwards}
+@keyframes glow-in{to{opacity:1}}
 .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.03;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 
@@ -91,10 +93,9 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;font-weight:700;lett
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   background:rgba(32,34,38,.72);border-bottom:1px solid var(--line-2)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:1.05rem}
-.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--font-display);
-  font-weight:800;font-size:1.3rem;letter-spacing:.02em;color:var(--ink);text-decoration:none}
-.brand .mark{width:34px;height:34px;display:block;object-fit:contain}
-.brand b{color:var(--accent-hi);font-weight:800}
+.brand{display:inline-flex;align-items:center;text-decoration:none;line-height:0}
+.brand-logo{height:46px;width:auto;display:block}
+footer .brand-logo{height:56px}
 .nav-links{display:flex;align-items:center;gap:2rem}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:600;
   letter-spacing:.02em;transition:color .3s var(--ease)}
@@ -113,18 +114,22 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;font-weight:700;lett
 .btn .arrow{transition:transform .3s var(--ease)}
 .btn:hover .arrow{transform:translateX(4px)}
 
-.eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-size:.76rem;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--accent-hi);margin-bottom:1.3rem}
-.eyebrow::before{content:"";width:26px;height:1px;background:var(--accent)}
+/* section kicker - bez ozdobnej kreski; charakter dodaje animowany pasek „speed" pod nagłówkiem */
+.eyebrow{display:inline-block;font-size:.82rem;font-weight:800;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--accent-hi);margin-bottom:.9rem}
+/* „speed" - czerwony pasek, który rozjeżdża się jak smuga prędkości gdy sekcja wjeżdża w kadr */
+.speed{height:3px;width:0;background:var(--grad);border-radius:3px;margin-top:1.4rem;
+  box-shadow:0 0 20px -2px rgba(225,29,40,.75);transition:width 1s var(--ease) .15s}
+.reveal.in .speed,.head.in .speed{width:78px}
 
 /* ---------- HERO - duże logo na środku, zdjęcie w tle ---------- */
 .hero{position:relative;overflow:hidden;min-height:88vh;display:grid;place-items:center;
   text-align:center;padding-block:clamp(5rem,12vw,9rem)}
 .hero-bg{position:absolute;inset:0;z-index:0;
   background:
-    linear-gradient(180deg,rgba(26,28,31,.72) 0%,rgba(26,28,31,.82) 55%,var(--bg) 100%),
-    url("https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1900&q=75") center 40%/cover no-repeat;
-  /* DO UZUPEŁNIENIA (Ola): docelowo zdjęcie samochodów na podnośniku / hali warsztatu. */
+    linear-gradient(180deg,rgba(20,21,24,.66) 0%,rgba(20,21,24,.8) 55%,var(--bg) 100%),
+    url("https://images.unsplash.com/photo-1632823471565-1ecdf5c6da05?auto=format&fit=crop&w=1900&q=75") center 45%/cover no-repeat;
+  /* DO UZUPEŁNIENIA (Ola): docelowo własne zdjęcie z warsztatu (auto na podnośniku / hala). */
 }
 .hero-bg::after{content:"";position:absolute;inset:0;
   background:radial-gradient(40rem 30rem at 50% 8%,rgba(225,29,40,.16),transparent 62%)}
@@ -163,7 +168,8 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;font-weight:700;lett
 .card:hover{transform:translateY(-3px);border-color:rgba(225,29,40,.45);box-shadow:var(--shadow)}
 .ico{width:46px;height:46px;flex:0 0 auto;border-radius:12px;background:var(--accent-soft);
   display:grid;place-items:center;color:var(--accent-hi)}
-.ico svg{width:23px;height:23px;stroke:currentColor;stroke-width:1.7;fill:none}
+.ico svg{width:23px;height:23px;flex:0 0 auto;stroke:currentColor;stroke-width:1.7;fill:none;
+  stroke-linecap:round;stroke-linejoin:round}
 .card h3{font-size:1.06rem;letter-spacing:-0.01em;font-weight:600;line-height:1.3}
 .services-outro{margin-top:2.4rem;color:var(--muted);font-size:1.08rem;line-height:1.7;max-width:52rem}
 
@@ -185,12 +191,9 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;font-weight:700;lett
 .info .v a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
 .info .v a:hover{border-color:var(--accent)}
 .info .v small{display:block;font-weight:400;font-size:.92rem;color:var(--muted);margin-top:.2rem}
-.map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);min-height:340px;
-  background:#17191c url("https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=900&q=60") center/cover no-repeat;
-  display:grid;place-items:end;padding:1.4rem}
-/* DO UZUPEŁNIENIA: osadzić prawdziwą mapę Google (iframe) - pinezka: ul. Robotnicza 13, Kobierzyce */
-.map .pin{font-size:.85rem;background:rgba(26,28,31,.8);backdrop-filter:blur(6px);
-  padding:.5rem .9rem;border-radius:999px;border:1px solid var(--line)}
+.map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);min-height:340px;background:#17191c}
+.map iframe{width:100%;height:100%;min-height:340px;border:0;display:block;
+  filter:grayscale(.2) contrast(1.03) brightness(.92)}
 
 /* notka VIN */
 .vin{margin-top:2.2rem;background:var(--panel);border:1px solid var(--line);
@@ -223,6 +226,8 @@ footer nav a:hover{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal,.load{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}
+  .glow{animation:none!important;opacity:1!important}
+  .speed{transition:none!important;width:78px!important}
 }
 
 /* ---------- responsive ---------- */
@@ -248,7 +253,7 @@ footer nav a:hover{color:var(--ink)}
 <!-- ================= NAV ================= -->
 <header class="nav">
   <div class="wrap">
-    <a href="#top" class="brand"><img src="assets/logo-mark.svg" alt="" class="mark" width="34" height="34">AW <b>Auto</b></a>
+    <a href="#top" class="brand" aria-label="AW Auto - strona główna"><img src="assets/logo.svg" alt="AW Auto" class="brand-logo" width="46" height="46"></a>
     <nav class="nav-links">
       <a href="#o-nas">O nas</a>
       <a href="#uslugi">Usługi</a>
@@ -282,6 +287,7 @@ footer nav a:hover{color:var(--ink)}
     <div class="head reveal">
       <p class="eyebrow">O nas</p>
       <h2>Jakość, której możesz zaufać</h2>
+      <div class="speed"></div>
     </div>
     <div class="about reveal d1">
       <p>Tworzymy nowoczesny warsztat samochodowy oparty na pasji, ambicji i najwyższych standardach obsługi. Do każdego samochodu podchodzimy z dokładnością i zaangażowaniem.</p>
@@ -298,6 +304,7 @@ footer nav a:hover{color:var(--ink)}
       <p class="eyebrow">Usługi</p>
       <h2>Nasze usługi</h2>
       <p>Oferujemy kompleksową obsługę serwisową samochodów osobowych, koncentrując się na naprawach mechanicznych, diagnostyce oraz bieżącej eksploatacji pojazdów. Dbamy o bezpieczeństwo i niezawodność Twojego samochodu.</p>
+      <div class="speed"></div>
     </div>
     <div class="grid g3">
       <div class="card reveal d1">
@@ -309,7 +316,7 @@ footer nav a:hover{color:var(--ink)}
         <h3>Przeglądy okresowe</h3>
       </div>
       <div class="card reveal d3">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M8 4h8l-1 6H9L8 4z"/><path d="M9 10v10m6-10v10M6 20h12"/></svg></div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3.5s6 6.8 6 11a6 6 0 0 1-12 0c0-4.2 6-11 6-11z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></div>
         <h3>Serwis olejowy oraz wymiana filtrów i płynów eksploatacyjnych</h3>
       </div>
       <div class="card reveal d1">
@@ -339,6 +346,7 @@ footer nav a:hover{color:var(--ink)}
     <div class="head reveal">
       <p class="eyebrow">Korzyści</p>
       <h2>Dlaczego warto nam zaufać?</h2>
+      <div class="speed"></div>
     </div>
     <ul class="checks">
       <li class="reveal d1"><span class="cb"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span>
@@ -364,21 +372,24 @@ footer nav a:hover{color:var(--ink)}
       <p class="eyebrow">Kontakt</p>
       <h2>Skontaktuj się z nami</h2>
       <p>Masz pytania lub chcesz umówić wizytę? Skontaktuj się z nami telefonicznie lub napisz wiadomość. Chętnie doradzimy, odpowiemy na pytania i pomożemy wybrać najlepsze rozwiązanie dla Twojego samochodu.</p>
+      <div class="speed"></div>
     </div>
     <div class="contact">
       <div class="info">
-        <!-- DO UZUPEŁNIENIA (Ola): prawdziwy telefon i e-mail. -->
+        <!-- DO UZUPEŁNIENIA (Ola): prawdziwy telefon. -->
         <div class="row reveal d1"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 5c0 9 6 15 15 15l0-3-4-2-2 2a12 12 0 0 1-6-6l2-2-2-4-3 0z"/></svg></span>
           <div><div class="k">Telefon</div><div class="v"><a href="tel:+48000000000">+48 000 000 000</a><small>Zadzwoń do nas - szybko ustalimy dogodny termin wizyty.</small></div></div></div>
         <div class="row reveal d2"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
-          <div><div class="k">E-mail</div><div class="v"><a href="mailto:kontakt@aw-auto.pl">kontakt@aw-auto.pl</a><small>Napisz do nas - odpowiemy najszybciej, jak to możliwe.</small></div></div></div>
+          <div><div class="k">E-mail</div><div class="v"><a href="mailto:biuro@aw-auto.pl">biuro@aw-auto.pl</a><small>Napisz do nas - odpowiemy najszybciej, jak to możliwe.</small></div></div></div>
         <div class="row reveal d3"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
           <div><div class="k">Adres</div><div class="v">ul. Robotnicza 13, 55&#8209;040 Kobierzyce</div></div></div>
         <div class="row reveal d4"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
           <div><div class="k">Godziny otwarcia</div><div class="v">8:00-17:00</div></div></div>
         <a href="tel:+48000000000" class="btn btn-primary reveal d4" style="justify-self:start;margin-top:.4rem">Zadzwoń teraz <span class="arrow">&rarr;</span></a>
       </div>
-      <div class="map reveal"><span class="pin">📍 AW Auto · ul. Robotnicza 13, Kobierzyce</span></div>
+      <div class="map reveal">
+        <iframe title="Mapa - AW Auto, ul. Robotnicza 13, 55-040 Kobierzyce" src="https://www.google.com/maps?q=ul.%20Robotnicza%2013%2C%2055-040%20Kobierzyce&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
     </div>
     <p class="vin reveal"><b>Dla sprawniejszej obsługi:</b> przed kontaktem z nami przygotuj numer VIN swojego pojazdu. Dzięki temu szybciej zweryfikujemy jego specyfikację i sprawniej przygotujemy odpowiednią diagnozę lub wycenę usługi.</p>
   </div>
@@ -388,7 +399,7 @@ footer nav a:hover{color:var(--ink)}
 <footer>
   <div class="wrap">
     <div>
-      <a href="#top" class="brand"><img src="assets/logo-mark.svg" alt="" class="mark" width="34" height="34">AW <b>Auto</b></a>
+      <a href="#top" class="brand" aria-label="AW Auto - strona główna"><img src="assets/logo.svg" alt="AW Auto" class="brand-logo" width="56" height="56"></a>
       <p>Nowoczesny warsztat samochodowy w Kobierzycach. Jakość, której możesz zaufać - rzetelna diagnostyka, precyzyjne wykonanie i uczciwe podejście do klienta.</p>
     </div>
     <div>
@@ -404,7 +415,7 @@ footer nav a:hover{color:var(--ink)}
       <h5>Kontakt</h5>
       <nav>
         <a href="tel:+48000000000">+48 000 000 000</a>
-        <a href="mailto:kontakt@aw-auto.pl">kontakt@aw-auto.pl</a>
+        <a href="mailto:biuro@aw-auto.pl">biuro@aw-auto.pl</a>
         <a href="#kontakt">ul. Robotnicza 13, 55-040 Kobierzyce</a>
       </nav>
     </div>
@@ -417,7 +428,7 @@ footer nav a:hover{color:var(--ink)}
   </div>
 </footer>
 
-<!-- Schema.org - lokalne SEO (AutoRepair). DO UZUPEŁNIENIA: telefon, e-mail. -->
+<!-- Schema.org - lokalne SEO (AutoRepair). DO UZUPEŁNIENIA: telefon. -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -427,7 +438,7 @@ footer nav a:hover{color:var(--ink)}
   "areaServed":"Kobierzyce, Wrocław",
   "address":{"@type":"PostalAddress","streetAddress":"ul. Robotnicza 13","addressLocality":"Kobierzyce","postalCode":"55-040","addressCountry":"PL"},
   "telephone":"+48000000000",
-  "email":"kontakt@aw-auto.pl",
+  "email":"biuro@aw-auto.pl",
   "openingHours":"Mo-Fr 08:00-17:00",
   "priceRange":"$$"
 }
